@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -29,7 +30,7 @@ const App = () => {
 
   const handleSignUp = async () => {
     try {
-      await axios.post('http://localhost:5000/api/users/signup', { nid, username, password });
+      await axios.post('http://localhost:5000/api/register', { nid, username, password });
       setVoteMessage('Signup successful');
       setView('login');
     } catch (error) {
@@ -39,7 +40,7 @@ const App = () => {
 
   const handleLogin = async () => {
     try {
-      if (username === 'admin' && password === '123456') {
+      if (nid === 'admin' && password === '123456') {
         setIsAdmin(true);
         setView('vote');
         return;
